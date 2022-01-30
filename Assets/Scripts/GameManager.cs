@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public float DeathSpeed;
     public string nextScene;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour
 
             if(un <= 0.3f)
             {
-                SceneManager.LoadScene(nextScene);
+                StartCoroutine(DeathAnimation());
             }
         }
         
@@ -67,6 +69,10 @@ public class GameManager : MonoBehaviour
     {
         hide = false;
         playerShadow.GetComponent<ParticleSystem>().Play();
-
+    }
+    IEnumerator DeathAnimation()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(nextScene);
     }
 }

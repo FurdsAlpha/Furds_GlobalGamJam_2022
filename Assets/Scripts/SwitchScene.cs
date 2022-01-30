@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SwitchScene : MonoBehaviour
 {
     public string nextScene;
+    public AudioSource levelUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,13 @@ public class SwitchScene : MonoBehaviour
     {
         if(collider.tag == "Player")
         {
-            SceneManager.LoadScene(nextScene);
+            levelUp.Play();
+            StartCoroutine(levelUpAnimation());
         }
+    }
+
+    IEnumerator levelUpAnimation(){
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(nextScene);
     }
 }

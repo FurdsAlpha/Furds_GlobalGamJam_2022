@@ -7,6 +7,7 @@ public class PickUpKey : MonoBehaviour
     public GameObject clef;
     public GameObject Active;
     public GameObject Desactive;
+    public AudioSource keyActivation;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +23,10 @@ public class PickUpKey : MonoBehaviour
     {
         if(collider.tag == "Player")
         {
+            keyActivation.Play();
             Active.SetActive(true);
             Desactive.SetActive(false);
             clef.SetActive(false);
         }
-        
-        Debug.Log("OnTriggerEnter");
     }
 }
