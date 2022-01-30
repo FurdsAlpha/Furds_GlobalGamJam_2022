@@ -22,9 +22,13 @@ public class SwitchScene : MonoBehaviour
     {
         if(collider.tag == "Player")
         {
-            levelUp.Play();
-            StartCoroutine(levelUpAnimation());
+            NextLevel();
         }
+    }
+    public void NextLevel()
+    {
+        levelUp.Play();
+        StartCoroutine(levelUpAnimation());
     }
 
     IEnumerator levelUpAnimation(){
