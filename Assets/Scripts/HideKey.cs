@@ -26,17 +26,17 @@ public class HideKey : MonoBehaviour
         colliderPoints[1] = new Vector2(-_light_.x , -_light_.y);
         edgeCol.points = colliderPoints;
     }
-    void OnTriggerEnter2D(Collider2D  collider)
+    void OnTriggerStay2D(Collider2D  collider)
     {
-        if(collider.tag == "Terrain" && hideInLight == false)
-        {
-            visuel.SetActive(false);
-            Debug.Log(this.gameObject + "est caché dans la lumiere");
-        }
-        else if(collider.tag == "Terrain" && hideInLight == true)
+        if(hideInLight == true)
         {
             visuel.SetActive(true);
-            Debug.Log(this.gameObject + "est révélé dans la pénombre");
+            Debug.Log(this.gameObject + "est révélé dans l'ombre");
+        }
+        else if(hideInLight == false)
+        {
+            visuel.SetActive(false);
+            Debug.Log(this.gameObject + "est caché dans l'ombre");
         }else{
             
         }
@@ -44,14 +44,14 @@ public class HideKey : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D  collider)
     {
-        if(collider.tag == "Terrain" && hideInLight == false)
-        {
-            visuel.SetActive(true);
-            Debug.Log(this.gameObject + "est caché dans la pénonbre");
-        }
-        else if(collider.tag == "Terrain" && hideInLight == true)
+        if(hideInLight == true)
         {
             visuel.SetActive(false);
+            Debug.Log(this.gameObject + "est caché dans la lumiere");
+        }
+        else if(hideInLight == false)
+        {
+            visuel.SetActive(true);
             Debug.Log(this.gameObject + "est révélé dans la lumiere");
         }
         else{
